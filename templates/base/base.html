@@ -1,62 +1,100 @@
 {% load static %}
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="{% block description %}{% endblock %}">
-    <title>{% block title %}{% endblock %}</title>
-
-    <meta name="keywords" content="{% block keywords %}{% endblock %} ">
-
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="format-detection" content="telephone-no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'my_css/base.my_css' %}"/>
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    <meta name="description" content="">
+    <title> Homepage </title>
+    <!-- Favicon -->
+    <link href="{% static 'images/favicon.png' %}" rel="icon" type="image/png">
+    <!-- Your stylesheet-->
+    <link rel="stylesheet"  type="text/css" href="{% static 'css/uikit.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <!--  javascript -->
+    <script src="{% static 'js/simplebar.js' %}"></script>
+    <script src="{% static 'js/uikit.js' %}"></script>
+</head>
+<body>
+    <!-- PreLoader -->
+    <div id="spinneroverlay">
+        <div class="spinner"></div>
+    </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
 
+    {% include 'base/header.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% include 'base/footer.html' %}
+
+    <!-- app end -->
+    <!-- button scrollTop -->
+    <button id="scrollTop" class="uk-animation-slide-bottom-medium">
+        <a href="#" class="uk-text-white" uk-totop uk-scroll></a>
+    </button>
+    <!--  Night mood -->
     <script>
-        //  Author: Vlasenko Fedor, valsenkofedor@mail.ru
-        function incrementValue() {
-            var value = parseInt(document.getElementById('number').value, 10);
-            value = isNaN(value) ? 0 : value;
-            value++;
-            document.getElementById('number').value = value + ' ДЕНЬ';
-        }
+        (function (window, document, undefined) {
+          'use strict';
+          if (!('localStorage' in window)) return;
+          var nightMode = localStorage.getItem('gmtNightMode');
+          if (nightMode) {
+              document.documentElement.className += ' night-mode';
+          }
+      })(window, document);
 
-        function decrementValue() {
-            var value = parseInt(document.getElementById('number').value, 10);
-            value = isNaN(value) ? 0 : value;
-            if (value > 1)
-                value--;
-            document.getElementById('number').value = value + ' ДЕНЬ';
-        }
 
-        function raschitat() {
-            shirina = document.getElementById('number').value;
-            ploschad = parseFloat(shirina);
-            stoimost = ploschad * 9.67;
-            document.getElementById('stoimost').innerHTML = stoimost;
+      (function (window, document, undefined) {
+
+          'use strict';
+
+          // Feature test
+          if (!('localStorage' in window)) return;
+
+          // Get our newly insert toggle
+          var nightMode = document.querySelector('#night-mode');
+          if (!nightMode) return;
+
+          // When clicked, toggle night mode on or off
+          nightMode.addEventListener('click', function (event) {
+              event.preventDefault();
+              document.documentElement.classList.toggle('night-mode');
+              if ( document.documentElement.classList.contains('night-mode') ) {
+                  localStorage.setItem('gmtNightMode', true);
+                  return;
+              }
+              localStorage.removeItem('gmtNightMode');
+          }, false);
+
+      })(window, document);
+
+        // Preloader
+        var spinneroverlay = document.getElementById("spinneroverlay");
+        window.addEventListener('load', function(){
+            spinneroverlay.style.display = 'none';
+        });
+
+         //scrollTop
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("scrollTop").style.display = "block";
+            } else {
+                document.getElementById("scrollTop").style.display = "none";
+            }
+        }
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
         }
 
     </script>
-
-    {% block css %}{% endblock %}
-</head>
-<body>
-{% include 'base/header.html' %}
-{% block content %}
-
-{% endblock %}
-{% include 'base/footer.html' %}
 </body>
 </html>
