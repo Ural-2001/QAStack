@@ -10,7 +10,7 @@
     <!-- Favicon -->
     <link href="{% static 'images/favicon.png' %}" rel="icon" type="image/png">
     <!-- Your stylesheet-->
-    <link rel="stylesheet"  type="text/css" href="{% static 'css/uikit.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- font awesome -->
     <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
@@ -19,82 +19,99 @@
     <script src="{% static 'js/uikit.js' %}"></script>
 </head>
 <body>
-    <!-- PreLoader -->
-    <div id="spinneroverlay">
-        <div class="spinner"></div>
-    </div>
+<!-- PreLoader -->
+<div id="spinneroverlay">
+    <div class="spinner"></div>
+</div>
 
 
-    {% include 'base/header.html' %}
+{% include 'base/header.html' %}
 
-    {% block content %}
-    {% endblock %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="uk-container">
+            <div class="uk-alert-success uk-text-center" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <p>{{ message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
 
-    {% include 'base/footer.html' %}
+{% block content %}
+{% endblock %}
 
-    <!-- app end -->
-    <!-- button scrollTop -->
-    <button id="scrollTop" class="uk-animation-slide-bottom-medium">
-        <a href="#" class="uk-text-white" uk-totop uk-scroll></a>
-    </button>
-    <!--  Night mood -->
-    <script>
-        (function (window, document, undefined) {
-          'use strict';
-          if (!('localStorage' in window)) return;
-          var nightMode = localStorage.getItem('gmtNightMode');
-          if (nightMode) {
-              document.documentElement.className += ' night-mode';
-          }
-      })(window, document);
+Bjk1903-
+{% include 'base/footer.html' %}
 
 
-      (function (window, document, undefined) {
+<!-- app end -->
+<!-- button scrollTop -->
+<button id="scrollTop" class="uk-animation-slide-bottom-medium">
+    <a href="#" class="uk-text-white" uk-totop uk-scroll></a>
+</button>
+<!--  Night mood -->
+<script>
+    (function (window, document, undefined) {
+        'use strict';
+        if (!('localStorage' in window)) return;
+        var nightMode = localStorage.getItem('gmtNightMode');
+        if (nightMode) {
+            document.documentElement.className += ' night-mode';
+        }
+    })(window, document);
 
-          'use strict';
 
-          // Feature test
-          if (!('localStorage' in window)) return;
+    (function (window, document, undefined) {
 
-          // Get our newly insert toggle
-          var nightMode = document.querySelector('#night-mode');
-          if (!nightMode) return;
+        'use strict';
 
-          // When clicked, toggle night mode on or off
-          nightMode.addEventListener('click', function (event) {
-              event.preventDefault();
-              document.documentElement.classList.toggle('night-mode');
-              if ( document.documentElement.classList.contains('night-mode') ) {
-                  localStorage.setItem('gmtNightMode', true);
-                  return;
-              }
-              localStorage.removeItem('gmtNightMode');
-          }, false);
+        // Feature test
+        if (!('localStorage' in window)) return;
 
-      })(window, document);
+        // Get our newly insert toggle
+        var nightMode = document.querySelector('#night-mode');
+        if (!nightMode) return;
 
-        // Preloader
-        var spinneroverlay = document.getElementById("spinneroverlay");
-        window.addEventListener('load', function(){
-            spinneroverlay.style.display = 'none';
-        });
-
-         //scrollTop
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("scrollTop").style.display = "block";
-            } else {
-                document.getElementById("scrollTop").style.display = "none";
+        // When clicked, toggle night mode on or off
+        nightMode.addEventListener('click', function (event) {
+            event.preventDefault();
+            document.documentElement.classList.toggle('night-mode');
+            if (document.documentElement.classList.contains('night-mode')) {
+                localStorage.setItem('gmtNightMode', true);
+                return;
             }
-        }
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
+            localStorage.removeItem('gmtNightMode');
+        }, false);
 
-    </script>
+    })(window, document);
+
+    // Preloader
+    var spinneroverlay = document.getElementById("spinneroverlay");
+    window.addEventListener('load', function () {
+        spinneroverlay.style.display = 'none';
+    });
+
+    //scrollTop
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+        scrollFunction()
+    };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("scrollTop").style.display = "block";
+        } else {
+            document.getElementById("scrollTop").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+</script>
 </body>
 </html>

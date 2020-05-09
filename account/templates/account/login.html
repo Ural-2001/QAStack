@@ -1,0 +1,72 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    <meta name="description" content="">
+    <title> REgister </title>
+    <!-- Favicon -->
+    <link href="{% static 'images/favicon.png' %}" rel="icon" type="image/png">
+    <!-- Your stylesheet-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.css' %}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <!--  javascript -->
+    <script src="{% static 'js/simplebar.js' %}"></script>
+    <script src="{% static 'js/uikit.js' %}"></script>
+</head>
+<body>
+
+<div uk-height-viewport="offset-top: true; offset-bottom: true" class="uk-flex uk-flex-middle">
+    <div class="uk-width-1-3@m uk-width-1-2@s uk-margin-auto">
+        <div class="uk-card-default uk-padding uk-card-small border-radius-6">
+            <!-- Login tab -->
+            <div>
+                <h2 class="uk-text-bold"> Log in </h2>
+                <p class="uk-text-muted uk-margin-remove-top uk-margin-small-bottom"> Fill blank to log your account</p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="uk-flex-middle" uk-grid>
+                        <div class="uk-width-auto@m">
+                            <a href="#" class="tablinks uk-text-small"> Lost
+                                password? </a>
+                        </div>
+                    </div>
+                    <div>
+                        <label>
+                            <input class="uk-checkbox" type="checkbox" data-show-pw="#password">
+                            <span class="checkmark uk-text-small"> Show password  </span>
+                        </label>
+                    </div>
+                    <div class="uk-margin uk-text-small">
+                        Not registered?
+                        <a href="{% url 'register' %}"> Create account </a>
+                    </div>
+                    <div class=" uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand@m">
+                            <input class="uk-button uk-button-success" type="submit" class="button" value="Login">
+                        </div>
+                        <div class="uk-width-auto@m uk-position-relative">
+                            <a class="uk-icon-button uk-button-primary uk-position-center-right" href="#"
+                               uk-tooltip="title: Log in with your Facebook ; delay: 500 ; pos: top-right ;animation:uk-animation-scale-up">
+                                <i class="fab fa-Facebook icon-small"></i> </a>
+                            <a class="uk-icon-button uk-button-danger uk-position-center-right uk-margin-medium-right "
+                               href="#"
+                               uk-tooltip="title: Log in with your Google  ; delay: 500 ; pos: top-right ;animation:	uk-animation-scale-up">
+                                <i class="fab fa-google icon-small"></i> </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
