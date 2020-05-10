@@ -478,37 +478,49 @@
                             </div>
                         </li>
                         <li>
-                            <!-- User profile -->
-                            <a href="#">
-                                <img src="../assets/images/avatures/avature-2.png" alt=""
-                                     class="uk-border-circle user-profile-tiny">
-                            </a>
-                            <div uk-dropdown="pos: top-right ;mode : click ;animation: uk-animation-slide-right"
-                                 class="uk-dropdown uk-padding-small uk-dropdown-top-right  angle-top-right">
-                                <p class="uk-margin-remove-bottom uk-margin-small-top uk-text-bold"> Hamse Mohamoud </p>
-                                <p class="uk-margin-remove-top uk-text-small uk-margin-small-bottom"> Bankook China</p>
-                                <ul class="uk-nav uk-dropdown-nav">
-                                    <li>
-                                        <a href="Profile.html"> <i class="fas fa-user uk-margin-small-right"></i>
-                                            Profile</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> <i class="fas fa-envelope uk-margin-small-right"></i> Messages </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> <i class="fas fa-share uk-margin-small-right"></i> Invite
-                                            freind</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"> <i class="fas fa-cog uk-margin-small-right"></i> Setting</a>
-                                    </li>
-                                    <li class="uk-nav-divider"></li>
-                                    <li>
-                                        <a href="{% url 'logout' %}"> <i class="fas fa-sign-out-alt uk-margin-small-right"></i> Log
-                                            out</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            {% if request.user.is_authenticated %}
+                                <!-- User profile -->
+                                <a href="#">
+                                    <img src="{% static 'images/avatures/avature-2.png' %}" alt=""
+                                         class="uk-border-circle user-profile-tiny">
+                                </a>
+                                <div uk-dropdown="pos: top-right ;mode : click ;animation: uk-animation-slide-right"
+                                     class="uk-dropdown uk-padding-small uk-dropdown-top-right  angle-top-right">
+                                    <p class="uk-margin-remove-bottom uk-margin-small-top uk-text-bold"> Hamse
+                                        Mohamoud </p>
+                                    <p class="uk-margin-remove-top uk-text-small uk-margin-small-bottom"> Bankook
+                                        China</p>
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <li>
+                                            <a href="Profile.html"> <i class="fas fa-user uk-margin-small-right"></i>
+                                                Profile</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <i class="fas fa-envelope uk-margin-small-right"></i> Messages
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <i class="fas fa-share uk-margin-small-right"></i> Invite
+                                                freind</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <i class="fas fa-cog uk-margin-small-right"></i> Setting</a>
+                                        </li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li>
+                                            <a href="{% url 'logout' %}"> <i
+                                                    class="fas fa-sign-out-alt uk-margin-small-right"></i> Log
+                                                out</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            {% else %}
+                                <div>
+                                    <a href="{% url 'login' %}" class="uk-button uk-button-small uk-button-white">
+                                        Login
+                                    </a>
+                                </div>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>
