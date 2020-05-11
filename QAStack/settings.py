@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'qa.apps.QaConfig',
     'pages.apps.PagesConfig',
     'crispy_forms',
+    # 'image_cropping',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

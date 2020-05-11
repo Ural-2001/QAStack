@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import UserRegisterForm
+from .models import UserProfile
 # Create your views here.
 
 
@@ -22,4 +23,6 @@ def register(request):
 
 @login_required()
 def profile(request):
-    return render(request, 'account/profile.html')
+    user = request.user
+    # my_user = UserProfile.objects.get(user=request.user)
+    return render(request, 'account/profile.html', {'user': user})
