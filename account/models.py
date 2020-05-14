@@ -9,4 +9,4 @@ class UserProfile(models.Model):
     avatar = ImageRatioField('photo', '106x100')
 
     def __str__(self):
-        return 'Profile for user {}'.format(self.user.username)
+        return '{}'.format(self.user.username)
