@@ -5,6 +5,6 @@ from account import views as account_views
 from .views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('profile/', profile, name='profile'),
+    path('delete_post/<int:id>', DeletePost.as_view(), name='delete_post'),
 ]

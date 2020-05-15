@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DeleteView
 from blog.models import *
 
 from .forms import UserRegisterForm
@@ -40,3 +40,12 @@ def profile(request):
     user = UserProfile.objects.get(user=request.user)
     posts = Post.objects.filter(author=user)
     return render(request, 'account/profile.html', {'posts': posts})
+
+
+class DeletePost(DeleteView):
+    def get(self, request, *args, **kwargs):
+        user = UserProfile.objects.get(user=request.user)
+        post = Post.objects.get(id=self.kwargs.get('id'))
+        if Post.objects.filter(author=user, id=post.id).exists():
+            Post.objects.filter(author=user, id=post.id).delete()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
