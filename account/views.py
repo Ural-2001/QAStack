@@ -3,6 +3,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.views.generic import TemplateView
+from blog.models import *
+
 from .forms import UserRegisterForm
 from .models import UserProfile
 # Create your views here.
@@ -21,8 +24,19 @@ def register(request):
     return render(request, 'account/register.html', {'form': form})
 
 
+
+# class ProfileView(TemplateView):
+#     template_name = 'account/profile.html'
+#
+#     def get(self, request, *args, **kwargs):
+#         return render(request, 'account/profile.html')
+#
+#     def post(self, request, *args, ** kwargs):
+#         pass
+
+
 @login_required()
 def profile(request):
-    user = request.user
-    # my_user = UserProfile.objects.get(user=request.user)
-    return render(request, 'account/profile.html', {'user': user})
+    user = UserProfile.objects.get(user=request.user)
+    posts = Post.objects.filter(author=user)
+    return render(request, 'account/profile.html', {'posts': posts})
