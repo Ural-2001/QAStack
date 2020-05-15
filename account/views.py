@@ -3,8 +3,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from django.views.generic import TemplateView, DeleteView
+from django.views.generic import TemplateView, DeleteView, CreateView
 from blog.models import *
+from blog.forms import *
 
 from .forms import UserRegisterForm
 from .models import UserProfile
@@ -48,4 +49,14 @@ class DeletePost(DeleteView):
         post = Post.objects.get(id=self.kwargs.get('id'))
         if Post.objects.filter(author=user, id=post.id).exists():
             Post.objects.filter(author=user, id=post.id).delete()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+class AddPost(CreateView):
+    def post(self, request, *args, **kwargs):
+        user = UserProfile.objects.get(user=request.user)
+        form = PostForm(request.POST)
+        if form.is_valid():
+            Post.objects.create(title=form.cleaned_data['title'], text=form.cleaned_data['text'], author=user)
+        print(form.is_valid())
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
