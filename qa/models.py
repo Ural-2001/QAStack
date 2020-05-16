@@ -19,5 +19,5 @@ class Question(models.Model):
 class Answer(models.Model):
     text = models.TextField(max_length=400)
     author = models.ForeignKey(UserProfile, related_name='comments', on_delete=models.CASCADE)
-    question = models.ForeignKey(Question, blank=True, related_name='question')
+    question = models.ForeignKey(Question, blank=True, related_name='question', on_delete=models.CASCADE)
 
