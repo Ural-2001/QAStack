@@ -10,3 +10,9 @@ class Post(models.Model):
 
     def __str__(self):
         return '{} by {}'.format(self.title, self.author)
+
+
+class Comment(models.Model):
+    text = models.TextField(max_length=300)
+    author = models.ForeignKey(UserProfile, related_name='comments', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
