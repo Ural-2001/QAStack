@@ -11,3 +11,8 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return '{}'.format(self.user.username)
+
+
+class Subscription(models.Model):
+    who = models.ForeignKey(UserProfile, related_name='subscriptions', on_delete=models.CASCADE)
+    on_whom = models.ForeignKey(UserProfile, related_name='subscribers', on_delete=models.CASCADE)
