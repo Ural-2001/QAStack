@@ -8,3 +8,5 @@ from image_cropping import ImageCroppingMixin
 #     fields = ['user', 'photo', ]
 
 admin.site.register(UserProfile)
+admin.site.register(Subscription)
+admin.site.register(Bucket)

@@ -6,5 +6,6 @@ from .views import *
 from account.views import *
 
 urlpatterns = [
-
+    path('post/<int:id>/', post_page, name='post_page'),
+    path('add_comment/<int:pk>/', add_comment, name='add_comment'),
 ]

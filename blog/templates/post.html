@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %} Post {% endblock %}
+
+{% block content %}
+    <div class="uk-container uk-margin-large-top">
+        <h1>{{ post.title }}</h1>
+{#        <p>{{ question.text }}</p>#}
+
+        <h3 class="uk-heading-line uk-text-center"><span>Have a comment?</span></h3>
+        <form action="{% url 'add_comment' pk=post.id %}" method="post">
+            {% csrf_token %}
+            <fieldset class="uk-fieldset">
+                <div class="uk-margin">
+                    <textarea class="uk-textarea" name="text" rows="5" placeholder="Your comment"></textarea>
+                </div>
+            </fieldset>
+            <input class="uk-button uk-button-primary" type="submit" value="Comment">
+        </form>
+
+        {% for comment in comments %}
+             <p>{{ comment.text }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}

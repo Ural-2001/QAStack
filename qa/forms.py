@@ -3,10 +3,5 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 
-class PostForm(forms.Form):
-    title = forms.CharField()
-    text = forms.CharField()
-
-
-class CommentForm(forms.Form):
+class AnswerForm(forms.Form):
     text = forms.CharField()

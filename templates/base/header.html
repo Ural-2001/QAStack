@@ -18,10 +18,10 @@
                       uk-toggle="target: #tm-show-on-mobile; cls: tm-show-on-mobile-active"><i
                         class="fas fa-user icon-large"></i></span>
                 <!-- mobile logo -->
-                <a class="uk-hidden@m uk-logo" href="Homepage.html"> CoursePlus</a>
+                <a class="uk-hidden@m uk-logo" href="{% url 'index' %}"> Q&A Stack</a>
                 <div class="uk-navbar-left uk-visible@m">
-                    <a href="Homepage.html" class="uk-logo uk-margin-left"> <i class="fas fa-graduation-cap"> </i>
-                        CoursePlace</a>
+                    <a href="{% url 'index' %}" class="uk-logo uk-margin-left"> <i class="fas fa-graduation-cap"> </i>
+                        Q&A Stack</a>
                 </div>
                 <div class="uk-navbar-right tm-show-on-mobile uk-flex-right" id="tm-show-on-mobile">
                     <!-- this will clouse after display user icon -->
@@ -31,424 +31,6 @@
                     <ul class="uk-navbar-nav uk-flex-middle">
                         <li>
                             <a href="#modal-full" uk-toggle><i class="fas fa-search icon-medium"></i></a>
-                        </li>
-                        <li>
-                            <!-- your courses -->
-                            <a href="#"> <i class="fas fa-play uk-hidden@m"></i> <span class="uk-visible@m"> Your Courses</span>
-                            </a>
-                            <div uk-dropdown="pos: top-right ;mode : click; animation: uk-animation-slide-bottom-medium"
-                                 class="uk-dropdown border-radius-6  uk-dropdown-top-right tm-dropdown-large uk-padding-remove">
-                                <div class="uk-clearfix">
-                                    <div class="uk-float-left">
-                                        <h5 class="uk-padding-small uk-margin-remove uk-text-bold  uk-text-left"> Your
-                                            Courses </h5>
-                                    </div>
-                                    <div class="uk-float-right">
-                                        <i class="fas fa-check uk-align-right  uk-margin-remove uk-margin-remove-left  uk-padding-small uk-text-small">
-                                            Completed 3 / 5 </i>
-                                    </div>
-                                </div>
-                                <hr class=" uk-margin-remove">
-                                <div class="uk-padding-smaluk-text-left uk-height-medium">
-                                    <div class="demo1" data-simplebar>
-                                        <div class="uk-child-width-1-2@s  uk-grid-small uk-padding-small"
-                                             uk-scrollspy="target: > div; cls:uk-animation-slide-bottom-small; delay: 100 ;repeat: true"
-                                             uk-grid>
-                                            <div>
-                                                <a href="course-view.html" class="uk-link-reset">
-                                                    <div class="uk-padding-small uk-card-default">
-                                                        <progress id="js-progressbar"
-                                                                  class="uk-progress progress-green uk-margin-small-bottom"
-                                                                  value="100" max="100" style="height: 7px;"></progress>
-                                                        <img src="../assets/images/courses/tags/css3.JPG"
-                                                             class="uk-align-left  uk-margin-small-right uk-margin-small-bottom  uk-width-1-3  uk-visible@s"
-                                                             alt="">
-                                                        <p class="uk-text-bold uk-margin-remove">CSS3 Introduciton </p>
-                                                        <p class="uk-text-small uk-margin-remove"> by : Hamse
-                                                            mohamoud </p>
-                                                        <div class="uk-margin-small">
-                                                            <a class="Course-tags uk-margin-small-right   border-radius-6"
-                                                               href="#"> <i class="far fa-play"></i> Course resume</a>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="course-view.html" class="uk-link-reset">
-                                                    <div class="uk-padding-small uk-card-default">
-                                                        <progress id="js-progressbar"
-                                                                  class="uk-progress progress-coral  uk-margin-small-bottom"
-                                                                  value="15" max="100"
-                                                                  style="height: 7px !important;"></progress>
-                                                        <img src="../assets/images/courses/tags/html5.jpg"
-                                                             class="uk-align-left  uk-margin-small-right uk-margin-small-bottom  uk-width-1-3  uk-visible@s"
-                                                             alt="">
-                                                        <p class="uk-text-bold uk-margin-remove">HTML5 Introduciton </p>
-                                                        <p class="uk-text-small uk-margin-remove"> by : Hamse
-                                                            mohamoud </p>
-                                                        <div class="uk-margin-small">
-                                                            <a class="Course-tags uk-margin-small-right   border-radius-6"
-                                                               href="#"> <i class="far fa-play"></i> Course resume</a>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="course-view.html" class="uk-link-reset">
-                                                    <div class="uk-padding-small uk-card-default">
-                                                        <progress id="js-progressbar"
-                                                                  class="uk-progress uk-margin-small-bottom" value="50"
-                                                                  max="100" style="height: 7px;"></progress>
-                                                        <img src="../assets/images/courses/course-4.jpg"
-                                                             class="uk-align-left  uk-margin-small-right uk-margin-small-bottom  uk-width-1-3"
-                                                             alt="">
-                                                        <p class="uk-text-bold uk-margin-remove">Html Introduciton </p>
-                                                        <p class="uk-text-small uk-margin-remove"> by : Hamse
-                                                            mohamoud </p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="course-view.html" class="uk-link-reset">
-                                                    <div class="uk-padding-small uk-card-default">
-                                                        <progress id="js-progressbar"
-                                                                  class="uk-progress progress-green uk-margin-small-bottom"
-                                                                  value="100" max="100" style="height: 7px;"></progress>
-                                                        <img src="../assets/images/courses/course-5.jpg"
-                                                             class="uk-align-left  uk-margin-small-right uk-margin-small-bottom  uk-width-1-3"
-                                                             alt="">
-                                                        <p class="uk-text-bold uk-margin-remove">Web Introduciton </p>
-                                                        <p class="uk-text-small uk-margin-remove"> by : Hamse
-                                                            mohamoud </p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="course-view.html" class="uk-link-reset">
-                                                    <div class="uk-padding-small uk-card-default uk-position-relative">
-                                                        <progress id="js-progressbar"
-                                                                  class="uk-progress  uk-margin-small-bottom" value="30"
-                                                                  max="100" style=" height: 7px;"></progress>
-                                                        <img src="../assets/images/courses/course-10.jpg" alt="">
-                                                        <div class="uk-position-absolute uk-position-medium uk-position-bottom-left uk-text-white">
-                                                            <p class="uk-text-bold uk-margin-remove">CSS3
-                                                                Introduciton </p>
-                                                            <p class="uk-text-small uk-margin-remove"> by : Hamse
-                                                                mohamoud </p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="course-view.html" class="uk-link-reset">
-                                                    <div class="uk-padding-small uk-card-default uk-position-relative">
-                                                        <progress id="js-progressbar"
-                                                                  class="uk-progress  uk-margin-small-bottom" value="70"
-                                                                  max="100" style="height: 7px;"></progress>
-                                                        <img src="../assets/images/courses/course-7.png" alt="">
-                                                        <div class="uk-position-absolute uk-position-medium uk-position-bottom-left uk-text-white">
-                                                            <p class="uk-text-bold uk-margin-remove">Bootstrap
-                                                                Introduciton </p>
-                                                            <p class="uk-text-small uk-margin-remove"> by : Hamse
-                                                                mohamoud </p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="course-view.html" class="uk-link-reset">
-                                                    <div class="uk-padding-small uk-card-default">
-                                                        <progress id="js-progressbar"
-                                                                  class="uk-progress progress-green uk-margin-small-bottom"
-                                                                  value="100" max="100" style="height: 7px;"></progress>
-                                                        <img src="../assets/images/courses/course-8.jpg" alt="">
-                                                        <div class="">
-                                                            <p class="uk-text-bold uk-margin-small-top uk-margin-remove-bottom">
-                                                                Python Introduciton </p>
-                                                            <p class="uk-text-small uk-margin-remove"> by : Hamse
-                                                                mohamoud </p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div>
-                                                <a href="course-view.html" class="uk-link-reset">
-                                                    <div class="uk-padding-small uk-card-default">
-                                                        <progress id="js-progressbar"
-                                                                  class="uk-progress  uk-margin-small-bottom" value="80"
-                                                                  max="100" style="height: 7px;"></progress>
-                                                        <img src="../assets/images/courses/course-9.jpg" alt="">
-                                                        <div class="">
-                                                            <p class="uk-text-bold uk-margin-small-top uk-margin-remove-bottom">
-                                                                JavaScript Introduciton </p>
-                                                            <p class="uk-text-small uk-margin-remove"> by : Hamse
-                                                                mohamoud </p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class=" uk-margin-remove">
-                                <h5 class="uk-padding-small uk-margin-remove uk-text-bold uk-text-center"><a
-                                        class="uk-link-heading" href="#"> See all </a></h5>
-                            </div>
-                        </li>
-                        <li>
-                            <!-- messages -->
-                            <a href="#"><i class="fas fa-envelope icon-medium"></i></a>
-                            <div uk-dropdown="pos: top-right ;mode : click; animation: uk-animation-slide-bottom-small"
-                                 class="uk-dropdown uk-dropdown-top-right  tm-dropdown-medium border-radius-6 uk-padding-remove uk-box-shadow-large angle-top-right">
-                                <h5 class="uk-padding-small uk-margin-remove uk-text-bold  uk-text-left"> Messages </h5>
-                                <a href="#" class="uk-position-top-right uk-link-reset"> <i
-                                        class="fas fa-trash uk-align-right uk-text-small uk-padding-small"> Clear
-                                    all</i> </a>
-                                <hr class=" uk-margin-remove">
-                                <div class="uk-text-left uk-height-medium">
-                                    <div uk-scrollspy="target: > div; cls:uk-animation-slide-bottom-small; delay: 100"
-                                         data-simplebar>
-                                        <hr class="uk-margin-remove uk-animation-slide-top-small">
-                                        <div class=" uk-padding-small  uk-background-light uk-inline-clip uk-transition-toggle"
-                                             tabindex="0">
-                                            <div class="uk-transition-slide-right-small uk-position-top-right uk-position-z-index">
-                                                <a class="uk-button uk-padding-small-right uk-padding-remove-left"
-                                                   href="#"> Delete </a>
-                                            </div>
-                                            <div class="uk-transition-slide-right-medium uk-position-top-right uk-margin-medium-right">
-                                                <a class="uk-button uk-margin-small-right" href="#"> Replay </a>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small uk-grid" uk-grid="">
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove-bottom uk-text-bold">John keni </p>
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor sit ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-4 uk-flex-first uk-first-column">
-                                                    <img src="../assets/images/avatures/avature-3.png" alt="Image"
-                                                         class="uk-border-circle uk-animation-slide-left-small">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr class=" uk-margin-remove">
-                                        <div class=" uk-padding-small  uk-background-light uk-inline-clip uk-transition-toggle"
-                                             tabindex="0">
-                                            <div class="uk-transition-slide-right-small uk-position-top-right uk-position-z-index">
-                                                <a class="uk-button uk-padding-small-right uk-padding-remove-left"
-                                                   href="#"> Delete </a>
-                                            </div>
-                                            <div class="uk-transition-slide-right-medium uk-position-top-right uk-margin-medium-right">
-                                                <a class="uk-button uk-margin-small-right" href="#"> Replay </a>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small uk-grid" uk-grid="">
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove-bottom uk-text-bold">John keni </p>
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor sit ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-4 uk-flex-first uk-first-column">
-                                                    <img src="../assets/images/avatures/avature.jpg" alt="Image"
-                                                         class="uk-border-circle uk-animation-slide-left-small">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr class=" uk-margin-remove">
-                                        <div class=" uk-padding-small  uk-background-light uk-inline-clip uk-transition-toggle"
-                                             tabindex="0">
-                                            <div class="uk-transition-slide-right-small uk-position-top-right uk-position-z-index">
-                                                <a class="uk-button uk-padding-small-right uk-padding-remove-left"
-                                                   href="#"> Delete </a>
-                                            </div>
-                                            <div class="uk-transition-slide-right-medium uk-position-top-right uk-margin-medium-right">
-                                                <a class="uk-button uk-margin-small-right" href="#"> Replay </a>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small uk-grid" uk-grid="">
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove-bottom uk-text-bold">John keni </p>
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor sit ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-4 uk-flex-first uk-first-column">
-                                                    <img src="../assets/images/avatures/avature-5.png" alt="Image"
-                                                         class="uk-border-circle uk-animation-slide-left-small">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr class=" uk-margin-remove">
-                                        <div class=" uk-padding-small  uk-background-light uk-inline-clip uk-transition-toggle"
-                                             tabindex="0">
-                                            <div class="uk-transition-slide-right-small uk-position-top-right uk-position-z-index">
-                                                <a class="uk-button uk-padding-small-right uk-padding-remove-left"
-                                                   href="#"> Delete </a>
-                                            </div>
-                                            <div class="uk-transition-slide-right-medium uk-position-top-right uk-margin-medium-right">
-                                                <a class="uk-button uk-margin-small-right" href="#"> Replay </a>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small uk-grid" uk-grid="">
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove-bottom uk-text-bold">John keni </p>
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor sit ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-4 uk-flex-first uk-first-column">
-                                                    <img src="../assets/images/avatures/avature-2.png" alt="Image"
-                                                         class="uk-border-circle uk-animation-slide-left-small">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr class=" uk-margin-remove">
-                                        <div class=" uk-padding-small  uk-background-light uk-inline-clip uk-transition-toggle"
-                                             tabindex="0">
-                                            <div class="uk-transition-slide-right-small uk-position-top-right uk-position-z-index">
-                                                <a class="uk-button uk-padding-small-right uk-padding-remove-left"
-                                                   href="#"> Delete </a>
-                                            </div>
-                                            <div class="uk-transition-slide-right-medium uk-position-top-right uk-margin-medium-right">
-                                                <a class="uk-button uk-margin-small-right" href="#"> Replay </a>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small uk-grid" uk-grid="">
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove-bottom uk-text-bold">John keni </p>
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor sit ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-4 uk-flex-first uk-first-column">
-                                                    <img src="../assets/images/avatures/avature-1.png" alt="Image"
-                                                         class="uk-border-circle">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr class=" uk-margin-remove">
-                                        <div class=" uk-padding-small  uk-background-light uk-inline-clip uk-transition-toggle"
-                                             tabindex="0">
-                                            <div class="uk-transition-slide-right-small uk-position-top-right uk-position-z-index">
-                                                <a class="uk-button uk-padding-small-right uk-padding-remove-left"
-                                                   href="#"> Delete </a>
-                                            </div>
-                                            <div class="uk-transition-slide-right-medium uk-position-top-right uk-margin-medium-right">
-                                                <a class="uk-button uk-margin-small-right" href="#"> Replay </a>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small uk-grid" uk-grid="">
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove-bottom uk-text-bold">John keni </p>
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor sit ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-4 uk-flex-first uk-first-column">
-                                                    <img src="../assets/images/avatures/avature.jpg" alt="Image"
-                                                         class="uk-border-circle">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class=" uk-margin-remove">
-                                <h5 class="uk-padding-small uk-margin-remove uk-text-bold uk-text-center"><a
-                                        class="uk-link-heading" href=""> See all </a></h5>
-                            </div>
-                        </li>
-                        <li>
-                            <!-- Notivications -->
-                            <a href="#"><i class="fas fa-bell icon-medium"></i></a>
-                            <div uk-dropdown="pos: top-right ;mode : hover; animation: uk-animation-slide-bottom-small"
-                                 class="uk-dropdown uk-dropdown-top-right  tm-dropdown-small border-radius-6 uk-padding-remove uk-box-shadow-large angle-top-right">
-                                <h5 class="uk-padding-small uk-margin-remove uk-text-bold  uk-text-left">
-                                    Notivications </h5>
-                                <a href="#" class="uk-position-top-right uk-link-reset"> <i
-                                        class="fas fa-trash uk-align-right uk-text-small uk-padding-small"> Clear
-                                    all</i></a>
-                                <hr class=" uk-margin-remove">
-                                <div class="uk-padding-smaluk-text-left uk-height-medium">
-                                    <div data-simplebar>
-                                        <div class="uk-padding-small"
-                                             uk-scrollspy="target: > div; cls:uk-animation-slide-bottom-small; delay: 100 ; repeat: true">
-                                            <div class="uk-flex-middle uk-grid-small" uk-grid>
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-5 uk-flex-first">
-                                                    <img src="../assets/images/avatures/avature-4.png" alt="Image"
-                                                         class="uk-border-circle">
-                                                </div>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small" uk-grid>
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-5 uk-flex-first">
-                                                    <img src="../assets/images/avatures/avature-1.png" alt="Image"
-                                                         class="uk-border-circle">
-                                                </div>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small" uk-grid>
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-5 uk-flex-first">
-                                                    <img src="../assets/images/avatures/avature.jpg" alt="Image"
-                                                         class="uk-border-circle">
-                                                </div>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small" uk-grid>
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-5 uk-flex-first">
-                                                    <img src="../assets/images/avatures/avature-2.png" alt="Image"
-                                                         class="uk-border-circle">
-                                                </div>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small" uk-grid>
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-5 uk-flex-first">
-                                                    <img src="../assets/images/avatures/avature-3.png" alt="Image"
-                                                         class="uk-border-circle">
-                                                </div>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small" uk-grid>
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-5 uk-flex-first">
-                                                    <img src="../assets/images/avatures/avature-4.png" alt="Image"
-                                                         class="uk-border-circle">
-                                                </div>
-                                            </div>
-                                            <div class="uk-flex-middle uk-grid-small" uk-grid>
-                                                <div class="uk-width-3-4">
-                                                    <p class="uk-margin-remove">Lorem ipsum dolor ame ..</p>
-                                                    <p class="uk-margin-remove-top uk-text-small uk-text-muted">25
-                                                        min</p>
-                                                </div>
-                                                <div class="uk-width-1-5 uk-flex-first">
-                                                    <img src="../assets/images/avatures/avature-1.png" alt="Image"
-                                                         class="uk-border-circle">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </li>
                         <li>
                             <!--  night mode  -->
@@ -486,26 +68,19 @@
                                 </a>
                                 <div uk-dropdown="pos: top-right ;mode : click ;animation: uk-animation-slide-right"
                                      class="uk-dropdown uk-padding-small uk-dropdown-top-right  angle-top-right">
-                                    <p class="uk-margin-remove-bottom uk-margin-small-top uk-text-bold"> Hamse
-                                        Mohamoud </p>
-                                    <p class="uk-margin-remove-top uk-text-small uk-margin-small-bottom"> Bankook
-                                        China</p>
+                                    <p class="uk-margin-remove-bottom uk-margin-small-top uk-text-bold"> {{ request.user.username }} </p>
                                     <ul class="uk-nav uk-dropdown-nav">
                                         <li>
                                             <a href="{% url 'profile' %}"> <i class="fas fa-user uk-margin-small-right"></i>
                                                 Profile</a>
                                         </li>
-                                        <li>
-                                            <a href="#"> <i class="fas fa-envelope uk-margin-small-right"></i> Messages
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#"> <i class="fas fa-share uk-margin-small-right"></i> Invite
-                                                freind</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"> <i class="fas fa-cog uk-margin-small-right"></i> Setting</a>
-                                        </li>
+{#                                        <li>#}
+{#                                            <a href="#"> <i class="fas fa-envelope uk-margin-small-right"></i> Messages#}
+{#                                            </a>#}
+{#                                        </li>#}
+{#                                        <li>#}
+{#                                            <a href="#"> <i class="fas fa-cog uk-margin-small-right"></i> Setting</a>#}
+{#                                        </li>#}
                                         <li class="uk-nav-divider"></li>
                                         <li>
                                             <a href="{% url 'logout' %}"> <i
@@ -645,39 +220,39 @@
         <div class="uk-flex uk-flex-center uk-width-expand">
             <ul class="uk-subnav uk-subnav-2">
                 <li class="uk-active">
-                    <a href="#"><i class="fas fa-question icon-medium uk-margin-small-right"></i> Questions on: </a>
-                    <!-- drop topic list -->
-                    <div uk-drop="pos: top-left ;mode:click ; offset: 10;animation: uk-animation-slide-bottom-small"
-                         class="uk-drop angle-top-left">
-                        <div class="tm-drop-topic">
-                            <div class="uk-grid-collapse uk-grid-match" uk-grid>
-                                <div class="uk-width-1-2">
-                                    <ul uk-tab="connect: #component-tab-left;animation: uk-animation-slide-left-small, uk-animation-slide-right-small"
-                                        class="tm-drop-topic-list uk-card uk-card-default uk-margin-remove uk-box-shadow-large">
-                                        <li>
-                                            <a href="#">Web Development</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="uk-width-1-2 uk-width-1-2">
-                                    <ul id="component-tab-left"
-                                        class="uk-switcher uk-card uk-card-default uk-box-shadow-large">
-                                        <li>
-                                            <!-- Web Development list -->
-                                            <ul class="tm-drop-topic-list uk-padding-remove">
-                                                <li>
-                                                    <a href="course-grid.html"> All Development</a>
-                                                </li>
-                                                <li>
-                                                    <a href="course-grid.html"> Web Development </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="{% url 'question_themes' %}"><i class="fas fa-question icon-medium uk-margin-small-right"></i> Questions on: </a>
+{#                    <!-- drop topic list -->#}
+{#                    <div uk-drop="pos: top-left ;mode:click ; offset: 10;animation: uk-animation-slide-bottom-small"#}
+{#                         class="uk-drop angle-top-left">#}
+{#                        <div class="tm-drop-topic">#}
+{#                            <div class="uk-grid-collapse uk-grid-match" uk-grid>#}
+{#                                <div class="uk-width-1-2">#}
+{#                                    <ul uk-tab="connect: #component-tab-left;animation: uk-animation-slide-left-small, uk-animation-slide-right-small"#}
+{#                                        class="tm-drop-topic-list uk-card uk-card-default uk-margin-remove uk-box-shadow-large">#}
+{#                                        <li>#}
+{#                                            <a href="#">Web Development</a>#}
+{#                                        </li>#}
+{#                                    </ul>#}
+{#                                </div>#}
+{#                                <div class="uk-width-1-2 uk-width-1-2">#}
+{#                                    <ul id="component-tab-left"#}
+{#                                        class="uk-switcher uk-card uk-card-default uk-box-shadow-large">#}
+{#                                        <li>#}
+{#                                            <!-- Web Development list -->#}
+{#                                            <ul class="tm-drop-topic-list uk-padding-remove">#}
+{#                                                <li>#}
+{#                                                    <a href="course-grid.html"> All Development</a>#}
+{#                                                </li>#}
+{#                                                <li>#}
+{#                                                    <a href="course-grid.html"> Web Development </a>#}
+{#                                                </li>#}
+{#                                            </ul>#}
+{#                                        </li>#}
+{#                                    </ul>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
                 </li>
                 <li>
                     <a href="books.html"> <i class="fas fa-file-alt icon-medium uk-margin-small-right"></i> Posts </a>

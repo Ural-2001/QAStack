@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 from image_cropping import ImageRatioField
-from blog.models import Post
+from blog.models import *
 
 
 class UserProfile(models.Model):
@@ -15,10 +15,10 @@ class UserProfile(models.Model):
 
 
 class Subscription(models.Model):
-    who = models.ForeignKey(UserProfile, related_name='subscriptions', on_delete=models.CASCADE)
-    on_whom = models.ForeignKey(UserProfile, related_name='subscribers', on_delete=models.CASCADE)
+    who = models.ForeignKey('account.UserProfile', related_name='subscriptions', on_delete=models.CASCADE)
+    on_whom = models.ForeignKey('account.UserProfile', related_name='subscribers', on_delete=models.CASCADE)
 
 
 class Bucket(models.Model):
-    saved_post = models.ForeignKey(Post, related_name='posts', on_delete=models.CASCADE)
+    saved_post = models.ForeignKey('blog.Post', related_name='posts', on_delete=models.CASCADE)
 

@@ -9,3 +9,4 @@ from .models import *
 #     fields = ['user', 'photo', ]
 
 admin.site.register(Post)
+admin.site.register(Comment)

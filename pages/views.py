@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from qa.models import *
 
 # Create your views here.
 
 def index(request):
-    return render(request, 'Homepage.html')
+    themes = Theme.objects.all()
+    return render(request, 'Homepage.html', {'themes': themes})

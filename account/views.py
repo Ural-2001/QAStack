@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.views.generic import TemplateView, DeleteView, CreateView
 from blog.models import *
 from blog.forms import *
+from qa.forms import AnswerForm
+from qa.models import *
 
 from .forms import UserRegisterForm
 from .models import UserProfile
@@ -40,7 +42,8 @@ def register(request):
 def profile(request):
     user = UserProfile.objects.get(user=request.user)
     posts = Post.objects.filter(author=user)
-    return render(request, 'account/profile.html', {'posts': posts})
+    questions = Question.objects.filter(author=user)
+    return render(request, 'account/profile.html', {'posts': posts, 'questions': questions})
 
 
 class DeletePost(DeleteView):

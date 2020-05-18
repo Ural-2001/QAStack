@@ -12,8 +12,8 @@
         <div class="uk-container">
             <div class="uk-position-relative uk-margin-medium-top none-border uk-clearfix">
                 <div class="uk-float-left">
-                    <h1 class="uk-text-white">Latest Courses</h1>
-                    <h4 class="uk-text-white uk-margin-remove uk-text-light"> New Courses </h4>
+                    <h1 class="uk-text-white">Welcome</h1>
+                    <h4 class="uk-text-white uk-margin-remove uk-text-light"> Have a problem? Choose a theme </h4>
                 </div>
                 <div class="uk-float-right">
                     <a href="#more" class="uk-button uk-button-default uk-button-white" uk-scroll>See more</a>
@@ -22,66 +22,20 @@
         </div>
         <div class="uk-position-relative uk-visible-toggle  uk-container uk-padding-medium" uk-slider>
             <ul class="uk-slider-items uk-child-width-1-3@s uk-child-width-1-4@m uk-grid">
+                {% for theme in themes %}
                 <li class="uk-active">
-                    <a href="course-view.html">
+                    <a href="{% url 'theme' theme.id %}">
                         <div class="uk-card-default uk-card-hover  uk-card-small feature-card uk-inline-clip">
                             <img class="course-img" src="../assets/images/Courses/course-10.jpg">
                             <div class="uk-card-body">
-                                <h4>Bootstrap Introduction </h4>
+                                <h4>{{ theme.name }} </h4>
                                 <p> Lorem ipsum dolor sit amet tempor consectetur adipiscing elit, sed do eiusmod
                                     tempor ... </p>
                             </div>
                         </div>
                     </a>
                 </li>
-                <li class="uk-active">
-                    <a href="course-view.html">
-                        <div class="uk-card-default uk-card-hover  uk-card-small feature-card uk-inline-clip">
-                            <img class="course-img" src="../assets/images/Courses/course-4.jpg">
-                            <div class="uk-card-body">
-                                <h4>Beginning JavaScript </h4>
-                                <p>Lorem ipsum dolor sit amet tempor consectetur adipiscineg elit, sed do eiusmod
-                                    tempor ...</p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="uk-active">
-                    <a href="course-view.html">
-                        <div class="uk-card-default uk-card-hover  uk-card-small feature-card uk-inline-clip">
-                            <img class="course-img" src="../assets/images/Courses/course-7.png">
-                            <div class="uk-card-body">
-                                <h4>Vue.js The Complete Guide </h4>
-                                <p> Lorem ipsum dolor sit amet tempor consectetur adipiscing elit, sed do eiusmod
-                                    tempor ... </p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="course-view.html">
-                        <div class="uk-card-default uk-card-hover  uk-card-small feature-card uk-inline-clip">
-                            <img class="course-img" src="../assets/images/Courses/course-11.jpg">
-                            <div class="uk-card-body">
-                                <h4>Complete web development </h4>
-                                <p> Lorem ipsum dolor sit amet tempor consectetur adipiscing elit, sed do eiusmod
-                                    tempor ... </p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="course-view.html">
-                        <div class="uk-card-default uk-card-hover  uk-card-small feature-card uk-inline-clip">
-                            <img class="course-img" src="../assets/images/Courses/course-7.png">
-                            <div class="uk-card-body">
-                                <h4> How to Create A Website </h4>
-                                <p> Lorem ipsum dolor sit amet tempor consectetur adipiscing elit, sed do eiusmod
-                                    tempor ... </p>
-                            </div>
-                        </div>
-                    </a>
-                </li>
+                {% endfor %}
             </ul>
             <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-hidden-hover uk-icon-button"
                href="#" uk-slidenav-previous uk-slider-item="previous"></a>
@@ -97,68 +51,15 @@
     <!-- end feature contant-->
     <!--  Page Contants  -->
     <div class="uk-container uk-margin-medium-top" id="more">
-        <h3 class="uk-text-light"> Popular topics </h3>
+        <h3 class="uk-text-light"> All topics </h3>
         <div class="uk-grid-small uk-child-width-1-6 uk-margin-large-bottom uk-visible@s" uk-grid>
+            {% for theme in themes %}
             <div>
                 <div class="uk-card-default uk-padding-small">
-                    Web Developement
+                    {{ theme.name }}
                 </div>
             </div>
-            <div>
-                <div class="uk-card-default uk-padding-small">
-                    JavaScript
-                </div>
-            </div>
-            <div>
-                <div class="uk-card-default uk-padding-small">
-                    Bootstrap
-                </div>
-            </div>
-            <div>
-                <div class="uk-card-default uk-padding-small">
-                    Angular
-                </div>
-            </div>
-            <div>
-                <div class="uk-card-default uk-padding-small">
-                    CSS
-                </div>
-            </div>
-            <div>
-                <div class="uk-card-default uk-padding-small">
-                    Python
-                </div>
-            </div>
-            <div>
-                <div class="uk-card-default uk-padding-small">
-                    Web Developement
-                </div>
-            </div>
-            <div>
-                <div class="uk-card-default uk-padding-small">
-                    WordPress
-                </div>
-            </div>
-            <div>
-                <div class="uk-card-default uk-padding-small">
-                    Django
-                </div>
-            </div>
-            <div>
-                <div class="uk-card-default uk-padding-small">
-                    PHP
-                </div>
-            </div>
-            <div>
-                <div class="uk-card-default uk-padding-small">
-                    HTML
-                </div>
-            </div>
-            <div>
-                <div class="uk-card-default uk-padding-small">
-                    Angular
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <div class="uk-container" id="browse-corses">
             <div class="section-heading uk-position-relative uk-margin-medium-top none-border uk-clearfix">

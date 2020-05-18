@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import UserProfile
+from account.models import *
 
 # Create your models here.
 
@@ -12,10 +12,10 @@ class Theme(models.Model):
 
 
 class Question(models.Model):
-    theme = models.ForeignKey(Theme, related_name='questions', on_delete=models.CASCADE)
+    theme = models.ForeignKey('qa.Theme', related_name='questions', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     text = models.TextField(max_length=400)
-    author = models.ForeignKey(UserProfile, related_name='questions', on_delete=models.CASCADE)
+    author = models.ForeignKey('account.UserProfile', related_name='questions', on_delete=models.CASCADE)
     # answers = models.ManyToManyField(Answer, blank=True, related_name='question')
 
     def __str__(self):
@@ -24,8 +24,8 @@ class Question(models.Model):
 
 class Answer(models.Model):
     text = models.TextField(max_length=400)
-    author = models.ForeignKey(UserProfile, related_name='answers', on_delete=models.CASCADE)
-    question = models.ForeignKey(Question, blank=True, related_name='question', on_delete=models.CASCADE)
+    author = models.ForeignKey('account.UserProfile', related_name='answers', on_delete=models.CASCADE)
+    question = models.ForeignKey('qa.Question', blank=True, related_name='question', on_delete=models.CASCADE)
 
     def __str__(self):
         return '{}'.format(self.text[0:10])
