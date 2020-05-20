@@ -8,5 +8,9 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('delete_post/<int:id>', DeletePost.as_view(), name='delete_post'),
     path('add_post/', AddPost.as_view(), name='add_post'),
+    path('all_users/', all_users, name='all_users'),
+    path('account_page/<int:id>', account_page, name='account_page'),
+    path('follow/<int:id>/', follow, name='follow'),
+    path('unfollow/<int:id>/', unfollow, name='unfollow'),
     path('', include('blog.urls')),
 ]

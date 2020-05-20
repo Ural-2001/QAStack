@@ -9,6 +9,11 @@ from blog.models import *
 from .forms import *
 
 
+def all_posts(request):
+    posts = Post.objects.all()
+    return render(request, 'posts.html', {'posts': posts})
+
+
 def post_page(request, id):
     post = Post.objects.get(id=id)
     comments = Comment.objects.filter(post=post)

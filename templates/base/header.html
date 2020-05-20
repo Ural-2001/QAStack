@@ -219,43 +219,14 @@
          uk-navbar>
         <div class="uk-flex uk-flex-center uk-width-expand">
             <ul class="uk-subnav uk-subnav-2">
-                <li class="uk-active">
+                <li class="">
                     <a href="{% url 'question_themes' %}"><i class="fas fa-question icon-medium uk-margin-small-right"></i> Questions on: </a>
-{#                    <!-- drop topic list -->#}
-{#                    <div uk-drop="pos: top-left ;mode:click ; offset: 10;animation: uk-animation-slide-bottom-small"#}
-{#                         class="uk-drop angle-top-left">#}
-{#                        <div class="tm-drop-topic">#}
-{#                            <div class="uk-grid-collapse uk-grid-match" uk-grid>#}
-{#                                <div class="uk-width-1-2">#}
-{#                                    <ul uk-tab="connect: #component-tab-left;animation: uk-animation-slide-left-small, uk-animation-slide-right-small"#}
-{#                                        class="tm-drop-topic-list uk-card uk-card-default uk-margin-remove uk-box-shadow-large">#}
-{#                                        <li>#}
-{#                                            <a href="#">Web Development</a>#}
-{#                                        </li>#}
-{#                                    </ul>#}
-{#                                </div>#}
-{#                                <div class="uk-width-1-2 uk-width-1-2">#}
-{#                                    <ul id="component-tab-left"#}
-{#                                        class="uk-switcher uk-card uk-card-default uk-box-shadow-large">#}
-{#                                        <li>#}
-{#                                            <!-- Web Development list -->#}
-{#                                            <ul class="tm-drop-topic-list uk-padding-remove">#}
-{#                                                <li>#}
-{#                                                    <a href="course-grid.html"> All Development</a>#}
-{#                                                </li>#}
-{#                                                <li>#}
-{#                                                    <a href="course-grid.html"> Web Development </a>#}
-{#                                                </li>#}
-{#                                            </ul>#}
-{#                                        </li>#}
-{#                                    </ul>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
                 </li>
                 <li>
-                    <a href="books.html"> <i class="fas fa-file-alt icon-medium uk-margin-small-right"></i> Posts </a>
+                    <a href="{% url 'all_posts' %}"> <i class="fas fa-file-alt icon-medium uk-margin-small-right"></i> Posts </a>
+                </li>
+                <li>
+                    <a href="{% url 'all_users' %}"> <i class="fas fa-users icon-medium uk-margin-small-right"></i> Brows users </a>
                 </li>
             </ul>
         </div>

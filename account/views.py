@@ -22,20 +22,22 @@ def register(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}!')
             return redirect('login')
+        UserProfile.objects.create(user=request.user)
     else:
         form = UserRegisterForm()
     return render(request, 'account/register.html', {'form': form})
 
 
+def all_users(request):
+    users = UserProfile.objects.all()
+    return render(request, 'account/all_users.html', {'users': users})
 
-# class ProfileView(TemplateView):
-#     template_name = 'account/profile.html'
-#
-#     def get(self, request, *args, **kwargs):
-#         return render(request, 'account/profile.html')
-#
-#     def post(self, request, *args, ** kwargs):
-#         pass
+
+def account_page(request, id):
+    user = UserProfile.objects.get(id=id)
+    posts = Post.objects.filter(author=user)
+    questions = Question.objects.filter(author=user)
+    return render(request, 'account/account_page.html', {'posts': posts, 'questions': questions, 'user': user})
 
 
 @login_required()
@@ -43,7 +45,26 @@ def profile(request):
     user = UserProfile.objects.get(user=request.user)
     posts = Post.objects.filter(author=user)
     questions = Question.objects.filter(author=user)
-    return render(request, 'account/profile.html', {'posts': posts, 'questions': questions})
+    subscriptions = Subscription.objects.filter(who=UserProfile.objects.get(user=request.user.id))
+    subscribers = Subscription.objects.filter(on_whom=UserProfile.objects.get(user=request.user.id))
+    return render(request, 'account/profile.html', {'posts': posts, 'questions': questions, 'subscriptions': subscriptions, 'subscribers': subscribers})
+
+
+def follow(request, id):
+    who = UserProfile.objects.get(user=request.user.id)
+    on_whom = UserProfile.objects.get(id=id)
+    if not Subscription.objects.filter(who=who, on_whom=on_whom).exists():
+        sub = Subscription(who=who, on_whom=on_whom)
+        sub.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def unfollow(request, id):
+    who = UserProfile.objects.get(user=request.user)
+    on_whom = UserProfile.objects.get(id=id)
+    if Subscription.objects.filter(who=who, on_whom=on_whom).exists():
+        Subscription.objects.filter(who=who, on_whom=on_whom).delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 class DeletePost(DeleteView):
