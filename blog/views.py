@@ -11,7 +11,8 @@ from .forms import *
 
 def all_posts(request):
     posts = Post.objects.all()
-    return render(request, 'posts.html', {'posts': posts})
+    specific_posts = Post.objects.filter(title__contains='post')
+    return render(request, 'posts.html', {'posts': posts, 'specific_posts': specific_posts})
 
 
 def post_page(request, id):

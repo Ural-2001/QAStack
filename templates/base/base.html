@@ -27,16 +27,7 @@
 
 {% include 'base/header.html' %}
 
-{% if messages %}
-    {% for message in messages %}
-        <div class="uk-container">
-            <div class="uk-alert-success uk-text-center" uk-alert>
-                <a class="uk-alert-close" uk-close></a>
-                <p>{{ message }}</p>
-            </div>
-        </div>
-    {% endfor %}
-{% endif %}
+
 
 <main>
     {% block content %}

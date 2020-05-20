@@ -28,6 +28,16 @@
         <div class="uk-card-default uk-padding uk-card-small border-radius-6">
             <!-- Login tab -->
             <div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="uk-container">
+                            <div class="uk-alert-success uk-text-center" uk-alert>
+                                <a class="uk-alert-close" uk-close></a>
+                                <p>{{ message }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 <h2 class="uk-text-bold"> Log in </h2>
                 <p class="uk-text-muted uk-margin-remove-top uk-margin-small-bottom"> Fill blank to log your account</p>
                 <form action="" method="POST">

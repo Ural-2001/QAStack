@@ -27,9 +27,10 @@ def register(request):
             # user.save()
             # user_profile.user = user
             # user_profile.save()
+            # new_user = UserProfile.objects.create(user=request.user)
+            # new_user.save()
 
             return redirect('login')
-        UserProfile.objects.create(user=request.user)
     else:
         form = UserRegisterForm()
     return render(request, 'account/register.html', {'form': form})
@@ -63,7 +64,11 @@ def profile(request):
     questions = Question.objects.filter(author=user)
     subscriptions = Subscription.objects.filter(who=UserProfile.objects.get(user=request.user.id))
     subscribers = Subscription.objects.filter(on_whom=UserProfile.objects.get(user=request.user.id))
-    return render(request, 'account/profile.html', {'posts': posts, 'questions': questions, 'subscriptions': subscriptions, 'subscribers': subscribers})
+    return render(request, 'account/profile.html', {'posts': posts,
+                                                    'questions': questions,
+                                                    'subscriptions': subscriptions,
+                                                    'subscribers': subscribers,
+                                                    'user': user})
 
 
 @login_required
