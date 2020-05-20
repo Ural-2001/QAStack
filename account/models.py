@@ -10,6 +10,7 @@ class UserProfile(models.Model):
     photo = models.ImageField(upload_to='account/avatars/%Y/%m/%d/', blank=True)
     avatar = ImageRatioField('photo', '106x100')
     master = models.BooleanField
+    date_of_birth = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return '{}'.format(self.user.username)

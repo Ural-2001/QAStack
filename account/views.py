@@ -9,7 +9,7 @@ from blog.forms import *
 from qa.forms import AnswerForm
 from qa.models import *
 
-from .forms import UserRegisterForm
+from .forms import *
 from .models import UserProfile
 # Create your views here.
 
@@ -19,8 +19,15 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
+            # user = User()
+            # user_profile = UserProfile()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}!')
+
+            # user.save()
+            # user_profile.user = user
+            # user_profile.save()
+
             return redirect('login')
         UserProfile.objects.create(user=request.user)
     else:
@@ -42,12 +49,39 @@ def account_page(request, id):
 
 @login_required()
 def profile(request):
-    user = UserProfile.objects.get(user=request.user)
+    # if UserProfile.objects.get(user=request.user).exists():
+    #     user = UserProfile.objects.get(user=request.user)
+    # else:
+    #     user = UserProfile(user=request.user)
+    #     user.save()
+    try:
+        user = UserProfile.objects.get(user=request.user)
+    except Exception:
+        user = UserProfile(user=request.user)
+        user.save()
     posts = Post.objects.filter(author=user)
     questions = Question.objects.filter(author=user)
     subscriptions = Subscription.objects.filter(who=UserProfile.objects.get(user=request.user.id))
     subscribers = Subscription.objects.filter(on_whom=UserProfile.objects.get(user=request.user.id))
     return render(request, 'account/profile.html', {'posts': posts, 'questions': questions, 'subscriptions': subscriptions, 'subscribers': subscribers})
+
+
+@login_required
+def edit(request):
+    if request.method == 'POST':
+        user_form = UserEditForm(instance=request.user, data=request.POST)
+        profile_form = UserProfileEditForm(instance=UserProfile.objects.get(user=request.user),
+                                       data=request.POST,
+                                       files=request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        user_form = UserEditForm(instance=request.user)
+        profile_form = UserProfileEditForm(instance=UserProfile.objects.get(user=request.user))
+    return render(request, 'account/edit.html',
+                  {'user_form': user_form, 'profile_form': profile_form})
 
 
 def follow(request, id):
