@@ -9,4 +9,5 @@ urlpatterns = [
     path('theme/<int:id>/', question_list, name='theme'),
     path('question/<int:id>/', question, name='question'),
     path('add_answer/<int:pk>/', add_answer, name='add_answer'),
+    path('add_question/<int:id>/', add_question, name='add_question'),
 ]

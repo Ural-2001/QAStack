@@ -2,10 +2,11 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import CreateView
 
-from qa.forms import AnswerForm
+from qa.forms import *
 from .models import *
 
 from django.core.paginator import Paginator
+
 
 # Create your views here.
 
@@ -36,6 +37,16 @@ def question(request, id):
     return render(request, 'question.html', {'answers': answers, 'question': question})
 
 
+def add_question(request, id):
+    user = UserProfile.objects.get(user=request.user)
+    theme = Theme.objects.get(id=id)
+    form = QuestionForm(request.POST)
+    if form.is_valid():
+        Question.objects.create(theme=theme, title=form.cleaned_data['title'],text=form.cleaned_data['text'], author=user)
+    print(form.is_valid())
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
 def add_answer(request, pk):
     user = UserProfile.objects.get(user=request.user)
     question = Question.objects.get(id=pk)
@@ -45,13 +56,12 @@ def add_answer(request, pk):
     print(form.is_valid())
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-
 # class AddAnswer(CreateView):
-    # def post(self, request, *args, **kwargs):
-    #     user = UserProfile.objects.get(user=request.user)
-    #     question = Question.objects.get(id=kwargs.get)
-    #     form = AnswerForm(request.POST)
-    #     if form.is_valid():
-    #         Answer.objects.create(text=form.cleaned_data['text'], author=user, question=question)
-    #     print(form.is_valid())
-    #     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+# def post(self, request, *args, **kwargs):
+#     user = UserProfile.objects.get(user=request.user)
+#     question = Question.objects.get(id=kwargs.get)
+#     form = AnswerForm(request.POST)
+#     if form.is_valid():
+#         Answer.objects.create(text=form.cleaned_data['text'], author=user, question=question)
+#     print(form.is_valid())
+#     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
