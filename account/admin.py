@@ -14,6 +14,6 @@ admin.site.register(Bucket)
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'master', 'date_of_birth')
+    list_display = ('user', 'age', 'master', 'date_of_birth')
     list_filter = ('date_of_birth',)
 

@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -10,9 +11,13 @@ from .forms import *
 
 
 def all_posts(request):
-    posts = Post.objects.all()
-    specific_posts = Post.objects.filter(title__contains='post')
-    return render(request, 'posts.html', {'posts': posts, 'specific_posts': specific_posts})
+    specific_posts2 = Post.objects.filter(Q(title__contains='post') & Q(text__startswith='2'))
+    search_query = request.GET.get('search', '')
+    if search_query:
+        posts = Post.objects.filter(title__icontains=search_query)
+    else:
+        posts = Post.objects.all()
+    return render(request, 'posts.html', {'posts': posts, 'specific_posts2': specific_posts2})
 
 
 def post_page(request, id):

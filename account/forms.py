@@ -29,4 +29,4 @@ class UserEditForm(forms.ModelForm):
 class UserProfileEditForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('date_of_birth', 'avatar')
+        fields = ('age', 'date_of_birth', 'avatar')

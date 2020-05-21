@@ -30,8 +30,32 @@
                             class="fas fa-times icon-large"></i></span>
                     <ul class="uk-navbar-nav uk-flex-middle">
                         <li>
-                            <a href="#modal-full" uk-toggle><i class="fas fa-search icon-medium"></i></a>
+                            <div class="uk-navbar-right">
+
+                                <div>
+                                    <a class="uk-navbar-toggle" href="#" uk-search-icon></a>
+                                    <div class="uk-navbar-dropdown"
+                                         uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
+
+                                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                                            <div class="uk-width-expand">
+                                                <form class="uk-search uk-search-navbar uk-width-1-1" action="{% url 'question_themes' %}">
+                                                    <input class="uk-search-input" type="search" placeholder="Search..."
+                                                           autofocus name="search">
+                                                </form>
+                                            </div>
+                                            <div class="uk-width-auto">
+                                                <a class="uk-navbar-dropdown-close" href="#" uk-close></a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </li>
+
                         <li>
                             <!--  night mode  -->
                             <a href="#"><i class="fas fa-moon icon-medium"></i></a>
@@ -71,16 +95,17 @@
                                     <p class="uk-margin-remove-bottom uk-margin-small-top uk-text-bold"> {{ request.user.username }} </p>
                                     <ul class="uk-nav uk-dropdown-nav">
                                         <li>
-                                            <a href="{% url 'profile' %}"> <i class="fas fa-user uk-margin-small-right"></i>
+                                            <a href="{% url 'profile' %}"> <i
+                                                    class="fas fa-user uk-margin-small-right"></i>
                                                 Profile</a>
                                         </li>
-{#                                        <li>#}
-{#                                            <a href="#"> <i class="fas fa-envelope uk-margin-small-right"></i> Messages#}
-{#                                            </a>#}
-{#                                        </li>#}
-{#                                        <li>#}
-{#                                            <a href="#"> <i class="fas fa-cog uk-margin-small-right"></i> Setting</a>#}
-{#                                        </li>#}
+                                        {#                                        <li>#}
+                                        {#                                            <a href="#"> <i class="fas fa-envelope uk-margin-small-right"></i> Messages#}
+                                        {#                                            </a>#}
+                                        {#                                        </li>#}
+                                        {#                                        <li>#}
+                                        {#                                            <a href="#"> <i class="fas fa-cog uk-margin-small-right"></i> Setting</a>#}
+                                        {#                                        </li>#}
                                         <li class="uk-nav-divider"></li>
                                         <li>
                                             <a href="{% url 'logout' %}"> <i
@@ -196,17 +221,7 @@
                         </ul>
                     </div>
                 </div>
-                <!-- search box -->
-                <div id="modal-full" class="uk-modal-full uk-modal uk-animation-scale-down" uk-modal>
-                    <div class="uk-modal-dialog uk-flex uk-flex-center" uk-height-viewport>
-                        <button class="uk-modal-close-full" type="button" uk-close></button>
-                        <form class="uk-search uk-margin-xlarge-top uk-search-large uk-animation-slide-bottom-medium">
-                            <i class="fas fa-search uk-position-absolute uk-margin-top icon-xxlarge"></i>
-                            <input class="uk-search-input uk-margin-large-left" type="search" placeholder="Search..."
-                                   autofocus>
-                        </form>
-                    </div>
-                </div>
+
             </nav>
         </div>
     </div>
@@ -220,13 +235,16 @@
         <div class="uk-flex uk-flex-center uk-width-expand">
             <ul class="uk-subnav uk-subnav-2">
                 <li class="">
-                    <a href="{% url 'question_themes' %}"><i class="fas fa-question icon-medium uk-margin-small-right"></i> Questions on: </a>
+                    <a href="{% url 'question_themes' %}"><i
+                            class="fas fa-question icon-medium uk-margin-small-right"></i> Questions on: </a>
                 </li>
                 <li>
-                    <a href="{% url 'all_posts' %}"> <i class="fas fa-file-alt icon-medium uk-margin-small-right"></i> Posts </a>
+                    <a href="{% url 'all_posts' %}"> <i class="fas fa-file-alt icon-medium uk-margin-small-right"></i>
+                        Posts </a>
                 </li>
                 <li>
-                    <a href="{% url 'all_users' %}"> <i class="fas fa-users icon-medium uk-margin-small-right"></i> Brows users </a>
+                    <a href="{% url 'all_users' %}"> <i class="fas fa-users icon-medium uk-margin-small-right"></i>
+                        Brows users </a>
                 </li>
             </ul>
         </div>

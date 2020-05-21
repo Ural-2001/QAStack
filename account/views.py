@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import F
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -45,6 +46,10 @@ def account_page(request, id):
     user = UserProfile.objects.get(id=id)
     posts = Post.objects.filter(author=user)
     questions = Question.objects.filter(author=user)
+    user.age = F('age') + 1
+    user.save()
+    user.refresh_from_db()
+    # age = user.age
     return render(request, 'account/account_page.html', {'posts': posts, 'questions': questions, 'user': user})
 
 

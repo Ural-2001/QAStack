@@ -9,7 +9,11 @@ from .models import *
 
 
 def question_themes(request):
-    themes = Theme.objects.all()
+    search_query = request.GET.get('search', '')
+    if search_query:
+        themes = Theme.objects.filter(name__icontains=search_query)
+    else:
+        themes = Theme.objects.all()
     return render(request, 'question_themes.html', {'themes': themes})
 
 
