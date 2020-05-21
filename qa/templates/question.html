@@ -7,6 +7,10 @@
     <div class="uk-container uk-margin-large-top">
         <h1>{{ question.title }}</h1>
         <p>{{ question.text }}</p>
+        <p class="uk-text-small uk-margin-remove"
+           style="background-color: lightskyblue; border-radius: 50px; padding: 3px 10px 3px 10px">
+            {{ question.author }}
+        </p>
 
         <h3 class="uk-heading-line uk-text-center"><span>Have a soluiton?</span></h3>
         <form action="{% url 'add_answer' pk=question.id %}" method="post">
@@ -20,7 +24,12 @@
         </form>
 
         {% for answer in answers %}
-             <p>{{ answer.text }}</p>
+            <div style="background-color: lightskyblue; border-radius: 20px; padding: 20px; margin: 5px 0 5px 0">
+                <p>{{ answer.text }}</p>
+                <p>by {{ answer.author }}</p>
+            </div>
+
+
         {% endfor %}
     </div>
 {% endblock %}
