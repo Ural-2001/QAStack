@@ -16,6 +16,15 @@ class UserProfile(models.Model):
         return '{}'.format(self.user.username)
 
 
+class Message(models.Model):
+    who = models.ForeignKey('account.UserProfile', related_name='send_mes', on_delete=models.CASCADE)
+    to_whom = models.ForeignKey('account.UserProfile', related_name='receive_mes', on_delete=models.CASCADE)
+    text = models.TextField(max_length=300)
+
+    def __str__(self):
+        return '{} to {}'.format(self.who, self.to_whom)
+
+
 class Subscription(models.Model):
     who = models.ForeignKey('account.UserProfile', related_name='subscriptions', on_delete=models.CASCADE)
     on_whom = models.ForeignKey('account.UserProfile', related_name='subscribers', on_delete=models.CASCADE)

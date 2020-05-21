@@ -10,6 +10,7 @@ from image_cropping import ImageCroppingMixin
 # admin.site.register(UserProfile)
 admin.site.register(Subscription)
 admin.site.register(Bucket)
+admin.site.register(Message)
 
 
 @admin.register(UserProfile)
