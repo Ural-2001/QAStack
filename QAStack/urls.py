@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.urls import path, include
+from django.urls import path, include, re_path
+
+from . import settings
 from account import views as account_views
+
+from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +30,7 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('', include('account.urls')),
     path('', include('qa.urls')),
+
+    re_path(r'^media/(?P<path>.)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.)$', serve, {'document_root': settings.STATIC_ROOT}),
 ]
