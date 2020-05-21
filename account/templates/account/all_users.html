@@ -13,14 +13,30 @@
                          tabindex="0" style="width: 80%; padding: 20px">
                         <a href="{% url 'account_page' user.id %}">
                             <p class="uk-margin-small-top uk-margin-remove-bottom uk-text-bold"> {{ user.user }}</p>
-                            <p class="uk-text-small uk-margin-remove"> {{ user.avatar }} </p>
+                            {% if user.avatar %}
+                                <img class="uk-width-1-1" src="{{ user.avatar.url }}" width="10"
+                                     height="10">
+                            {% else %}
+                                <img class="uk-width-1-1" src="{% static 'images/avatures/avature-3.png' %}" width="10"
+                                     height="10">
+                            {% endif %}
                         </a>
-                        <div class="uk-transition-slide-right-medium uk-position-bottom-right uk-padding-small">
-                            <a class="uk-button uk-button-small uk-button-primary" href="{% url 'follow' user.id %}"> Follow </a>
-                        </div>
-                        <div class="uk-transition-slide-right-medium uk-position-top-right uk-padding-small">
-                            <a class="uk-button uk-button-small uk-button-danger" href="{% url 'unfollow' user.id %}"> Unfollow </a>
-                        </div>
+{#                        {% if user in sub_list %}#}
+                            {#                    <p>{{ sub_list }}</p>#}
+                            <div class="uk-transition-slide-left-medium uk-position-bottom-left uk-padding-small">
+                                <a class="uk-button uk-button-small uk-button-danger"
+                                   href="{% url 'unfollow' user.id %}">
+                                    Unfollow </a>
+                            </div>
+{#                        {% else %}#}
+
+                            <div class="uk-transition-slide-right-medium uk-position-bottom-right uk-padding-small">
+                                <a class="uk-button uk-button-small uk-button-primary"
+                                   href="{% url 'follow' user.id %}">
+                                    Follow </a>
+                            </div>
+{#                        {% endif %}#}
+
                     </div>
                 </div>
             {% endfor %}

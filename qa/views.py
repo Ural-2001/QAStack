@@ -5,16 +5,23 @@ from django.views.generic import CreateView
 from qa.forms import AnswerForm
 from .models import *
 
+from django.core.paginator import Paginator
+
 # Create your views here.
 
 
 def question_themes(request):
     search_query = request.GET.get('search', '')
     if search_query:
-        themes = Theme.objects.filter(name__icontains=search_query)
+        themes_in_pag = Theme.objects.filter(name__icontains=search_query)
     else:
-        themes = Theme.objects.all()
-    return render(request, 'question_themes.html', {'themes': themes})
+        themes_in_pag = Theme.objects.all()
+    themes = Theme.objects.all()
+
+    paginator = Paginator(themes_in_pag, 2)
+    page = request.GET.get('page')
+    themes_in_pag = paginator.get_page(page)
+    return render(request, 'question_themes.html', {'themes': themes, 'themes_in_pag': themes_in_pag})
 
 
 def question_list(request, id):

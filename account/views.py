@@ -39,7 +39,12 @@ def register(request):
 
 def all_users(request):
     users = UserProfile.objects.all()
-    return render(request, 'account/all_users.html', {'users': users})
+    subs = Subscription.objects.all()
+    sub_list = []
+    for sub in subs:
+        sub_list.append(sub.on_whom)
+
+    return render(request, 'account/all_users.html', {'users': users, 'subs': subs, 'sub_list': sub_list})
 
 
 def account_page(request, id):
