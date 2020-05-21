@@ -36,3 +36,7 @@ class Subscription(models.Model):
 class Bucket(models.Model):
     saved_post = models.ForeignKey('blog.Post', related_name='posts', on_delete=models.CASCADE)
 
+
+class Thank(models.Model):
+    who = models.ForeignKey('account.UserProfile', related_name='thanks', on_delete=models.CASCADE)
+    to_whom = models.ForeignKey('account.UserProfile', related_name='thanked', on_delete=models.CASCADE)

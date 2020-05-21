@@ -11,6 +11,7 @@ from image_cropping import ImageCroppingMixin
 admin.site.register(Subscription)
 admin.site.register(Bucket)
 admin.site.register(Message)
+admin.site.register(Thank)
 
 
 @admin.register(UserProfile)
