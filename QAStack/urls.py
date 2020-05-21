@@ -27,3 +27,7 @@ urlpatterns = [
     path('', include('account.urls')),
     path('', include('qa.urls')),
 ]
+
+
+handler404 = 'pages.views.e_handler404'
+handler500 = 'pages.views.e_handler500'
